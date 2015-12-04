@@ -1,13 +1,12 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
-// var Topic = require('./topic')
 var Actions = require('../actions');
 var TopicStore = require('../stores/topic-store');
 var Reflux = require('reflux');
 
 
-module.exports = React.createClass({
+module.exports = React.createClass({  
   mixins: [Reflux.listenTo(TopicStore, 'onChange')],
   getInitialState: function() {
     return {
