@@ -1,20 +1,18 @@
 var React = require('react');
-var Api = require('../utils/api')
+var TopicStore = require('../stores/topic-store');
+var Reflux = require('reflux');
 
 module.exports = React.createClass({
+  mixins: [
+    Reflux.listenTo(TopicStore, "onChange")
+  ],
   getInitialState: function() {
     return {
       topics: []
     }
   },
   componentWillMount: function() {
-    Api.get('topics/defaults')
-      .then(function(data) {
-        this.setState({
-          topics: data.data
-        })
-        console.log(data);
-      }.bind(this));
+    TopicStore.getTopics();
   },
   render: function() {
     return <div className="list-group">
@@ -27,5 +25,9 @@ module.exports = React.createClass({
         {topic}
       </li>
     })
+  },
+  onChange: function(event, topic) {
+    this.setState({topics: topic});
   }
+
 });
