@@ -1,6 +1,6 @@
 var Fetch = require('whatwg-fetch');
 var rootUrl = 'https://api.imgur.com/3/';
-var apiKey = '';
+var apiKey = 'dd371aac13451a3';
 
 module.exports = {
   get: function(url) {

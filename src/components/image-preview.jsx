@@ -1,4 +1,6 @@
 var React = require('react');
+var ReactRouter = require('react-router');
+var Link = ReactRouter.Link;
 
 // module.exports = React.createClass({
 //   render: function() {
@@ -15,14 +17,15 @@ module.exports = React.createClass({
     }
   },
   render: function() {
-    return <div 
+    return <Link 
+      to={"images/" + this.props.id}
       className="image-preview"
       onMouseEnter={this.handleMouseEnter}
       onMouseLeave={this.handleMouseLeave}
       >
       {this.props.animated && this.state.hovering ? this.video() : this.image()}
-      {this.props.animated && !this.state.hoveing ? this.icon() : null}
-    </div>
+      {this.props.animated && !this.state.hovering ? this.icon() : null}
+    </Link>
   },
   image: function() {
     var link = 'http://i.imgur.com/' + this.props.id + 'h.jpg';
