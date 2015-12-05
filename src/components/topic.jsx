@@ -28,7 +28,6 @@ module.exports = React.createClass({
     });
   },
   onChange: function(event, images) {
-    console.log(images)
     this.setState({images: images});
   }
 })
